@@ -1,4 +1,4 @@
-def multily(a, b):
+def test_multily(a, b):
     """Multiplies two numbers."""
     return a * b
-print(multily(3, 4))  # Example usage, should print 12
+print(test_multily(3, 4))  # Example usage, should print 12
