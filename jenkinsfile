@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'demo_branch', url: 'https://github.com/skrazzaqgithub/demo_repo.git'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'pip install --upgrade pip'
+                sh 'pip install --user -r requirements.txt'
+            }
+        }
+        stage('Lint') {
+            steps {
+                sh 'export PATH=$PATH:$HOME/.local/bin && flake8 . || true'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'export PATH=$PATH:$HOME/.local/bin && pytest tests/'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application...'
+            }
+        }
+    }
+}
