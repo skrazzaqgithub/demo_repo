@@ -1,3 +1,3 @@
-def test_addition(a, b):
+def addition(a, b):
     return a + b
-print(test_addition(5, 3))  # Output: 8
+print(addition(5, 3))  # Output: 8
